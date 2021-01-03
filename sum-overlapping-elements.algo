@@ -1,0 +1,42 @@
+ALGORITHM SumOverlappingElementsSol1
+VAR
+    i,j,sum,n,m: INTEGER
+    set1 : ARRAY_OF INTEGER[n];
+    set2 : ARRAY_OF INTEGER[m];
+BEGIN
+    sum:=0
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        Read(set1[i])
+        FOR j FROM 0 TO m-1 STEP 1  DO
+            Read(set2[j])
+            IF (set2[j]=set1[i]) THEN
+                sum:=set2[j]+set1[i]
+            END_IF
+        END_FOR
+    END_FOR
+    Write(sum)
+END
+
+
+
+
+
+
+ALGORITHM SumOverlappingElementsSol1
+VAR
+    i,j,sum,n,m: INTEGER
+    set1 : ARRAY_OF INTEGER[n];
+    set2 : ARRAY_OF INTEGER[m];
+BEGIN
+    sum:=0
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        Read(set1[i])
+        FOR j FROM 0 TO m-1 STEP 1  DO
+            Read(set2[j])
+            IF (set2[j]=set1[i]) THEN
+                sum:=set2[j]+set1[i]
+            END_IF
+        END_FOR
+    END_FOR
+    Write(sum)
+END

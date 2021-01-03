@@ -1,0 +1,71 @@
+ALGORITHM SumDistinctElementsSol1
+VAR
+    i,j,sum,n,m: INTEGER
+    set1 : ARRAY_OF INTEGER[n];
+    set2 : ARRAY_OF INTEGER[m];
+BEGIN
+sum:=0
+j:=0
+FOR i FROM 0 TO n-1 STEP 1  DO
+    Read(set1[i])
+    Read(set2[j])
+    IF (set1[i]<>set2[j]) THEN
+        sum:=sum + set1[i]
+    END_IF
+    j:=j+1
+END_FOR
+i:=0
+FOR j FROM 0 TO m-1 STEP 1  DO
+    Read(set2[j])
+    Read(set1[i])
+    IF (set2[j]<>set1[i]) THEN
+        sum:=sum + set2[j]
+    END_IF
+    i:=i+1
+END_FOR
+Write(sum)
+END
+
+
+
+
+
+
+
+
+
+ALGORITHM SumDistinctElementsSol2
+VAR
+    i,j,k,count,n,m,sum: INTEGER
+    set1 : ARRAY_OF INTEGER[n];
+    set2 : ARRAY_OF INTEGER[m];
+    set  : ARRAY_OF INTEGER[n+m];
+    htab : HASH_TABLE<INTEGER,INTEGER>;  
+BEGIN
+sum:=0
+// 'set' is the new array with 'set1' and 'set2' elements
+k=0
+Read(set1)
+WHILE (i <= n) DO
+    set[k]:=set1[i]
+    k := k+1
+    i := i+1
+END_WHILE 
+Read(set2)
+WHILE (j <= m) DO
+    set[k]:=set2[j]
+    k := k+1
+    j := j+1
+END_WHILE
+
+FOR i FROM 0 TO m+n-1 STEP 1  DO
+    count:= htab.get(set[i]);
+    htab.insert(set[i],count);
+    IF (count>1) THEN
+        sum:=sum+set[i]*count
+    ELSE
+        sum:=0
+    END_IF
+END_FOR
+Write(sum)
+END
